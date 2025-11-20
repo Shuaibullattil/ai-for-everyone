@@ -45,8 +45,8 @@ const Programs = () => {
             return (
               <Card
                 key={index}
-                className="border-2 hover:border-primary transition-all duration-300 hover:shadow-lg group animate-fade-in"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="border-2 hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group opacity-0 animate-slide-up"
+                style={{ animationDelay: `${index * 200}ms` }}
               >
                 <CardHeader className="space-y-4">
                   <div className={`${program.color} w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform`}>

@@ -42,8 +42,8 @@ const Resources = () => {
             return (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-shadow animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="hover:shadow-lg hover:-translate-y-1 transition-all opacity-0 animate-slide-up"
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
