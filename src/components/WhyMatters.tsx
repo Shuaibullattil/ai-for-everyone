@@ -34,8 +34,8 @@ const WhyMatters = () => {
             {reasons.map((reason, index) => (
               <div
                 key={index}
-                className="flex items-start gap-3 p-4 bg-card rounded-lg border border-border hover:border-primary/50 transition-all hover:translate-x-1 opacity-0 animate-slide-up"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="flex items-start gap-3 p-4 bg-card rounded-lg border border-border hover:border-primary/50 transition-colors animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                   <Check className="h-4 w-4 text-primary" />
