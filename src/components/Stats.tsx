@@ -13,8 +13,8 @@ const Stats = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center space-y-2 animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="text-center space-y-2 opacity-0 animate-slide-up"
+              style={{ animationDelay: `${index * 150 + 1100}ms` }}
             >
               <h3 className="text-4xl sm:text-5xl font-bold text-primary">
                 {stat.value}
