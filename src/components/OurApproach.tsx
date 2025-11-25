@@ -1,43 +1,111 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-const Pill = ({ title, emoji, children, delay = 0 }: { title: string; emoji: string; children: React.ReactNode; delay?: number }) => {
+const milestones = [
+  {
+    number: "01",
+    title: "Head — Understand",
+    description: "Learn how AI works and why it matters in everyday life.",
+  },
+  {
+    number: "02",
+    title: "Hand — Build",
+    description: "Experiment with AI tools, create projects, and solve local problems through hands-on learning.",
+  },
+  {
+    number: "03",
+    title: "Heart — Create & Share",
+    description: "Share knowledge, mentor others, and help build an inclusive AI-powered future for Kerala.",
+  }
+];
+
+const TimelineMilestone = ({
+  milestone,
+  index,
+  isActive
+}: {
+  milestone: typeof milestones[0];
+  index: number;
+  isActive: boolean;
+}) => {
+  const isLeft = index % 2 === 0;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: delay * 0.001, ease: "easeOut" }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/20 dark:border-slate-700/50 rounded-2xl p-8 flex-1 shadow-lg hover:shadow-xl transition-shadow"
-    >
-      <div className="flex items-center gap-4 mb-4">
-        <div className="text-4xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-slate-800 dark:to-slate-700 p-3 rounded-xl shadow-inner">{emoji}</div>
-        <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300">{title}</h3>
-      </div>
-      <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{children}</p>
-    </motion.div>
+    <div className="relative flex items-center gap-8 md:gap-12">
+      {/* Content card - alternating sides on desktop, centered on mobile */}
+      <motion.div
+        initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className={`flex-1 bg-white dark:bg-slate-900 rounded-2xl p-6 md:p-8 border-2 border-slate-200 dark:border-slate-700 shadow-lg max-w-md ${isLeft ? 'md:ml-auto md:mr-8' : 'md:mr-auto md:ml-8 md:order-2'
+          }`}
+      >
+        <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900 dark:text-white">
+          {milestone.title}
+        </h3>
+        <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+          {milestone.description}
+        </p>
+      </motion.div>
+
+      {/* Milestone circle - on the timeline */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        className="absolute left-1/2 -translate-x-1/2 z-10"
+      >
+        <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-slate-950 transition-colors duration-500 ${isActive
+            ? 'bg-blue-600 dark:bg-blue-500'
+            : 'bg-slate-300 dark:bg-slate-600'
+          }`}>
+          <span className="text-white font-bold text-lg md:text-xl">{milestone.number}</span>
+        </div>
+      </motion.div>
+
+      {/* Spacer for desktop layout */}
+      <div className={`flex-1 hidden md:block ${isLeft ? '' : 'md:order-1'}`} />
+    </div>
   );
 };
 
 const OurApproach = () => {
-  return (
-    <section id="approach" className="w-full max-w-7xl mx-auto px-4 md:py-32 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none opacity-30 dark:opacity-10">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-20 right-20 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
-      </div>
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+
+  // Transform scroll progress to height percentage for the blue line
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const [milestone1Active, setMilestone1Active] = React.useState(true);
+  const [milestone2Active, setMilestone2Active] = React.useState(false);
+  const [milestone3Active, setMilestone3Active] = React.useState(false);
+
+  React.useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      setMilestone1Active(true);
+      setMilestone2Active(latest >= 0.33);
+      setMilestone3Active(latest >= 0.66);
+    });
+    return unsubscribe;
+  }, [scrollYProgress]);
+
+  return (
+    <section ref={containerRef} id="approach" className="w-full max-w-7xl mx-auto px-4 py-20 md:py-32 relative">
       <div className="relative z-10">
-        <div className="text-center mb-16">
+        {/* Header */}
+        <div className="text-center mb-32">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 dark:from-white dark:via-purple-200 dark:to-white"
+            className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white"
           >
             Our Learning Approach
           </motion.h2>
@@ -52,18 +120,23 @@ const OurApproach = () => {
           </motion.p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-          <Pill title="Head — Understand" emoji="🧠" delay={0}>
-            Learn how AI works and why it matters in everyday life.
-          </Pill>
+        {/* Timeline Container */}
+        <div className="relative">
+          {/* Continuous background line - light grey */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-slate-200 dark:bg-slate-700 -translate-x-1/2" />
 
-          <Pill title="Hand — Build" emoji="✋" delay={200}>
-            Experiment with AI tools, create projects, and solve local problems through hands-on learning.
-          </Pill>
+          {/* Progress line - blue (fills as you scroll) */}
+          <motion.div
+            className="absolute left-1/2 top-0 w-0.5 md:w-1 bg-blue-600 dark:bg-blue-500 -translate-x-1/2 origin-top"
+            style={{ height: lineHeight }}
+          />
 
-          <Pill title="Heart — Create & Share" emoji="❤️" delay={400}>
-            Share knowledge, mentor others, and help build an inclusive AI-powered future for Kerala.
-          </Pill>
+          {/* Milestones - Increased spacing */}
+          <div className="space-y-32 md:space-y-48 relative">
+            <TimelineMilestone milestone={milestones[0]} index={0} isActive={milestone1Active} />
+            <TimelineMilestone milestone={milestones[1]} index={1} isActive={milestone2Active} />
+            <TimelineMilestone milestone={milestones[2]} index={2} isActive={milestone3Active} />
+          </div>
         </div>
       </div>
     </section>
