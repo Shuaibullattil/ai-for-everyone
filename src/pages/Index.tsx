@@ -1,8 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Programs from "@/components/Programs";
 import WhyMatters from "@/components/WhyMatters";
-import Resources from "@/components/Resources";
+import OurApproach from "@/components/OurApproach";
+import WhatWeResolving from "@/components/WhatWeResolving";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -12,9 +12,12 @@ const Index = () => {
       <main>
         <Hero />
         <WhyMatters />
-        <Programs />
-        
-        <Resources />
+
+        {/* New sections added: Our Approach (Head · Hand · Heart) */}
+        <OurApproach />
+
+        {/* Impact / What we're solving */}
+        <WhatWeResolving />
       </main>
       <Footer />
     </div>
