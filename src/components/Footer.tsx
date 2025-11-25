@@ -1,15 +1,23 @@
+import { motion } from "framer-motion";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted/30 border-t border-border py-12 px-4 sm:px-6 lg:px-8">
+    <motion.footer
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.3 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="bg-muted/30 border-t border-border py-12 px-4 sm:px-6 lg:px-8"
+    >
       <div className="container mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="text-xl font-bold mb-4">AI for Everyone</h3>
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              A Kerala-wide initiative to democratize AI education and empower communities 
+              A Kerala-wide initiative to democratize AI education and empower communities
               through accessible, hands-on learning.
             </p>
           </div>
@@ -64,7 +72,7 @@ const Footer = () => {
           <p>&copy; {currentYear} AI for Everyone - Kerala. All rights reserved.</p>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

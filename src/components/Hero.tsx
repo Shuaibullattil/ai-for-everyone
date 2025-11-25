@@ -2,11 +2,12 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/everyone.png";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const [displayedSubText, setDisplayedSubText] = useState("");
   const subText = "Connect with like-minded students for fun, friendships, and future opportunities.";
-  
+
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -17,7 +18,7 @@ const Hero = () => {
         clearInterval(timer);
       }
     }, 30);
-    
+
     return () => clearInterval(timer);
   }, []);
 
@@ -36,7 +37,12 @@ const Hero = () => {
 
       {/* Content Container - Top of Image */}
       <div className="relative z-10 h-full flex items-start justify-center pt-24 sm:pt-28 lg:pt-32 px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-2">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto text-center space-y-2"
+        >
           {/* Hero Headline - Two Lines */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
             Find Your Tribe,
@@ -52,14 +58,14 @@ const Hero = () => {
 
           {/* Single CTA with Breathing Animation */}
           <div className="pt-3 opacity-0 animate-fade-in" style={{ animationDelay: '3s', animationFillMode: 'forwards' }}>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="text-sm sm:text-base px-8 sm:px-10 py-5 sm:py-6 rounded-full bg-black text-white hover:bg-gray-900 shadow-2xl animate-breathe"
             >
               Explore
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`

@@ -6,7 +6,7 @@ const Pill = ({ title, emoji, children, delay = 0 }: { title: string; emoji: str
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: false, amount: 0.3 }}
       transition={{ duration: 0.6, delay: delay * 0.001, ease: "easeOut" }}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/20 dark:border-slate-700/50 rounded-2xl p-8 flex-1 shadow-lg hover:shadow-xl transition-shadow"
@@ -32,19 +32,19 @@ const OurApproach = () => {
 
       <div className="relative z-10">
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 dark:from-white dark:via-purple-200 dark:to-white"
           >
             Our Learning Approach
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
           >
