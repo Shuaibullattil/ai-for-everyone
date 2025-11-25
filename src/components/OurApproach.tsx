@@ -22,7 +22,7 @@ const Pill = ({ title, emoji, children, delay = 0 }: { title: string; emoji: str
 
 const OurApproach = () => {
   return (
-    <section id="approach" className="w-full max-w-7xl mx-auto px-4 py-20 md:py-32 relative overflow-hidden">
+    <section id="approach" className="w-full max-w-7xl mx-auto px-4 md:py-32 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none opacity-30 dark:opacity-10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>

@@ -88,17 +88,17 @@ const WhyAILiteracy = () => {
         </motion.div>
       </div>
 
-      {/* Sticky Scroll Section */}
+      {/* Sticky Scroll Section - Works on all screen sizes */}
       <div
         ref={containerRef}
-        className="relative w-full hidden md:block"
-        style={{ height: `${reasons.length * 80}vh` }}
+        className="relative w-full"
+        style={{ height: `${reasons.length * 60}vh` }}
       >
         <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-          <div className="max-w-7xl mx-auto w-full px-4 grid grid-cols-2 gap-12 items-center h-full">
+          <div className="max-w-7xl mx-auto w-full px-4 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center h-full">
 
-            {/* Left Column: Text Content */}
-            <div className="relative h-96 flex items-center">
+            {/* Text Content - Bottom on mobile, Left on desktop */}
+            <div className="relative w-full flex items-center justify-center md:h-96 h-auto order-2 md:order-1">
               {reasons.map((reason, index) => (
                 <motion.div
                   key={index}
@@ -112,21 +112,21 @@ const WhyAILiteracy = () => {
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                   className="absolute top-0 left-0 w-full"
                 >
-                  <div className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 ${reason.bg} text-slate-800 dark:text-slate-200`}>
+                  <div className={`inline-block px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 ${reason.bg} text-slate-800 dark:text-slate-200`}>
                     Reason 0{index + 1}
                   </div>
-                  <h3 className="text-4xl lg:text-5xl font-bold mb-6 text-slate-900 dark:text-white leading-tight">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-slate-900 dark:text-white leading-tight">
                     {reason.title}
                   </h3>
-                  <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
+                  <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
                     {reason.description}
                   </p>
                 </motion.div>
               ))}
             </div>
 
-            {/* Right Column: Avatar */}
-            <div className="relative h-[500px] w-full flex items-center justify-center">
+            {/* Avatar - Top on mobile, Right on desktop */}
+            <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] flex items-center justify-center order-1 md:order-2 mt-28">
               {/* Background Blob */}
               <motion.div
                 animate={{
@@ -151,34 +151,13 @@ const WhyAILiteracy = () => {
                   <img
                     src={reason.avatar}
                     alt={reason.title}
-                    className="w-full h-full object-contain drop-shadow-2xl"
+                    className="w-full h-full object-contain drop-shadow-2xl "
                   />
                 </motion.div>
               ))}
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Mobile Fallback (Standard Stacked Layout) */}
-      <div className="md:hidden px-4 pb-20 flex flex-col gap-12">
-        {reasons.map((reason, index) => (
-          <div key={index} className="bg-slate-50 dark:bg-slate-900/50 rounded-3xl p-8 border border-slate-100 dark:border-slate-800">
-            <div className="mb-6 flex justify-center">
-              <img
-                src={reason.avatar}
-                alt={reason.title}
-                className="w-48 h-48 object-contain drop-shadow-lg"
-              />
-            </div>
-            <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
-              {reason.title}
-            </h3>
-            <p className="text-lg text-slate-600 dark:text-slate-400">
-              {reason.description}
-            </p>
-          </div>
-        ))}
       </div>
     </div>
   );
