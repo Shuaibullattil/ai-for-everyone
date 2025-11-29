@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { Lightbulb, DollarSign, Megaphone, Package, Users, ArrowRight } from "lucide-react";
 import {
     Accordion,
@@ -9,8 +8,6 @@ import {
 } from "@/components/ui/accordion";
 
 const PartnerWithUs = () => {
-    const navigate = useNavigate();
-
     const fadeInVariants = {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0 }
@@ -148,7 +145,11 @@ const PartnerWithUs = () => {
                 className="text-center"
             >
                 <button
-                    onClick={() => navigate('/partners')}
+                    onClick={() => {
+                        // Button is already in the partnership section, so no action needed
+                        // Or scroll to top of section if needed
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                     className="group inline-flex items-center gap-3 px-8 py-4 bg-[#00DF82] hover:bg-[#00DF82]/90 text-[#030F0F] font-bold rounded-full shadow-lg hover:shadow-xl hover:shadow-[#00DF82]/50 transition-all duration-300 transform hover:scale-105"
                 >
                     <span className="text-lg">Explore Partnership Opportunities</span>

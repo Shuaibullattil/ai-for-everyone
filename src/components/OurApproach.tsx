@@ -1,34 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Brain, Hand, Heart } from "lucide-react";
 
 const milestones = [
   {
     number: "01",
-    icon: Brain,
-    title: "Head — Understand",
+    title: "Head",
     description: "Learn how AI works and why it matters in everyday life.",
-    color: "from-blue-500 to-cyan-500",
-    bgColor: "bg-blue-50 dark:bg-blue-950/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
   },
   {
     number: "02",
-    icon: Hand,
-    title: "Hand — Build",
+    title: "Hand",
     description: "Experiment with AI tools, create projects, and solve local problems through hands-on learning.",
-    color: "from-green-500 to-emerald-500",
-    bgColor: "bg-green-50 dark:bg-green-950/20",
-    borderColor: "border-green-200 dark:border-green-800",
   },
   {
     number: "03",
-    icon: Heart,
-    title: "Heart — Create & Share",
+    title: "Heart",
     description: "Share knowledge, mentor others, and help build an inclusive AI-powered future for Kerala.",
-    color: "from-pink-500 to-rose-500",
-    bgColor: "bg-pink-50 dark:bg-pink-950/20",
-    borderColor: "border-pink-200 dark:border-pink-800",
   }
 ];
 
@@ -55,7 +42,6 @@ const OurApproach = () => {
         {/* Cards Grid - Responsive Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative">
           {milestones.map((milestone, index) => {
-            const Icon = milestone.icon;
             return (
               <motion.div
                 key={milestone.number}
@@ -63,7 +49,7 @@ const OurApproach = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className={`relative ${milestone.bgColor} rounded-2xl p-8 border-2 ${milestone.borderColor} shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group`}
+                className="relative bg-[#03624C] rounded-2xl p-8 border-2 border-[#03624C] shadow-lg hover:shadow-2xl hover:border-[#00DF82] transition-all duration-300 transform hover:-translate-y-2 group"
               >
                 {/* Connecting Arrow (only on desktop, between cards) */}
                 {index < milestones.length - 1 && (
@@ -90,29 +76,20 @@ const OurApproach = () => {
                 )}
 
                 {/* Number Badge */}
-                <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-gradient-to-br from-[#00DF82] to-[#03624C] flex items-center justify-center shadow-xl border-4 border-white dark:border-[#030F0F] z-20">
-                  <span className="text-white font-bold text-xl">{milestone.number}</span>
+                <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-[#00DF82] flex items-center justify-center shadow-xl border-4 border-white dark:border-[#030F0F] z-20">
+                  <span className="text-[#030F0F] font-bold text-xl">{milestone.number}</span>
                 </div>
 
-                {/* Icon */}
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${milestone.color} flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow`}
-                >
-                  <Icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
-                </motion.div>
-
                 {/* Content */}
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[#030F0F] dark:text-white group-hover:text-[#00DF82] transition-colors">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[#00DF82] group-hover:text-[#00DF82] transition-colors">
                   {milestone.title}
                 </h3>
-                <p className="text-sm md:text-base text-[#030F0F]/70 dark:text-gray-400 leading-relaxed">
+                <p className="text-sm md:text-base text-[#00DF82]/80 leading-relaxed">
                   {milestone.description}
                 </p>
 
                 {/* Decorative Element */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${milestone.color} rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity`} />
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#00DF82] rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.div>
             );
           })}

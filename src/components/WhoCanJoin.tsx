@@ -149,7 +149,7 @@ const WhoCanJoin = () => {
 
                                 {/* Back of Card */}
                                 <div
-                                    className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-[#03624C]/10 to-[#00DF82]/10 dark:from-[#03624C]/20 dark:to-[#00DF82]/20 rounded-2xl p-6 md:p-8 border-2 border-[#00DF82] shadow-xl flex flex-col"
+                                    className="absolute inset-0 w-full h-full backface-hidden bg-[#03624C] rounded-2xl p-6 md:p-8 border-2 border-[#00DF82] shadow-xl flex flex-col"
                                     style={{
                                         transform: "rotateY(180deg)",
                                     }}
@@ -160,26 +160,26 @@ const WhoCanJoin = () => {
                                     </div>
 
                                     {/* Title */}
-                                    <h4 className="text-xl md:text-2xl font-bold text-[#030F0F] dark:text-white mb-2">
+                                    <h4 className="text-xl md:text-2xl font-bold text-[#00DF82] mb-2">
                                         {audience.title}
                                     </h4>
 
                                     {/* Why */}
                                     <div className="mb-4 flex-1">
-                                        <h5 className="text-xs font-bold uppercase tracking-wider text-[#030F0F]/60 dark:text-gray-500 mb-2">
+                                        <h5 className="text-xs font-bold uppercase tracking-wider text-[#00DF82]/80 mb-2">
                                             Why Join?
                                         </h5>
-                                        <p className="text-sm text-[#030F0F]/80 dark:text-gray-300 leading-relaxed">
+                                        <p className="text-sm text-[#00DF82]/90 leading-relaxed">
                                             {audience.why}
                                         </p>
                                     </div>
 
                                     {/* How */}
                                     <div className="mb-4">
-                                        <h5 className="text-xs font-bold uppercase tracking-wider text-[#030F0F]/60 dark:text-gray-500 mb-2">
+                                        <h5 className="text-xs font-bold uppercase tracking-wider text-[#00DF82]/80 mb-2">
                                             How We Support You
                                         </h5>
-                                        <p className="text-sm text-[#030F0F]/80 dark:text-gray-300 leading-relaxed">
+                                        <p className="text-sm text-[#00DF82]/90 leading-relaxed">
                                             {audience.how}
                                         </p>
                                     </div>
@@ -188,7 +188,7 @@ const WhoCanJoin = () => {
                                     <motion.div
                                         animate={{ opacity: [0.5, 1, 0.5] }}
                                         transition={{ duration: 2, repeat: Infinity }}
-                                        className="flex items-center gap-2 text-xs text-[#030F0F]/60 dark:text-gray-400 mt-auto"
+                                        className="flex items-center gap-2 text-xs text-[#00DF82]/70 mt-auto"
                                     >
                                         <RotateCcw className="w-4 h-4" />
                                         <span>Tap to flip back</span>
