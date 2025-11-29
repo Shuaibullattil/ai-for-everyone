@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Rocket, HandHeart, RotateCcw } from "lucide-react";
-import avatar1 from "../assets/avatar/1.svg";
-import avatar2 from "../assets/avatar/2.svg";
-import avatar3 from "../assets/avatar/3.svg";
+import avatar1 from "../assets/avatar/kuttimakers.png";
+import avatar2 from "../assets/avatar/college students.png";
+import avatar3 from "../assets/avatar/professionals.png";
 
 const WhoCanJoin = () => {
     const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());

@@ -1,5 +1,57 @@
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Users, MapPin, Calendar, ExternalLink } from "lucide-react";
+
+const AnimatedStatNumber = ({ value }: { value: string }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+
+        // Parse the value string (e.g., "50K+", "100+", "500+")
+        const hasK = value.includes("K");
+        const numericValue = parseInt(value.replace(/[K+]/g, ""));
+
+        const duration = 2000; // 2 seconds
+        const steps = 60;
+        const increment = numericValue / steps;
+        const stepDuration = duration / steps;
+
+        let current = 0;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= numericValue) {
+                setCount(numericValue);
+                clearInterval(timer);
+            } else {
+                setCount(Math.floor(current));
+            }
+        }, stepDuration);
+
+        return () => clearInterval(timer);
+    }, [isInView, value]);
+
+    // Format the number with K notation if needed
+    const formatNumber = (num: number) => {
+        if (value.includes("K")) {
+            return `${num}K+`;
+        }
+        return `${num.toLocaleString("en-IN")}+`;
+    };
+
+    return (
+        <motion.div
+            ref={ref}
+            className="inline-block"
+            animate={isInView ? { scale: [1, 1.1, 1] } : {}}
+            transition={{ duration: 0.5, delay: 1.5 }}
+        >
+            {formatNumber(count)}
+        </motion.div>
+    );
+};
 
 const AboutTinkerHub = () => {
     const fadeInVariants = {
@@ -64,9 +116,15 @@ const AboutTinkerHub = () => {
                                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#00DF82]/10 text-[#00DF82] mb-4">
                                     <Icon className="w-8 h-8" />
                                 </div>
-                                <div className="text-4xl md:text-5xl font-bold text-[#00DF82] mb-2">
-                                    {stat.value}
-                                </div>
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: false, amount: 0.3 }}
+                                    transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                                    className="text-4xl md:text-5xl font-bold text-[#00DF82] mb-2"
+                                >
+                                    <AnimatedStatNumber value={stat.value} />
+                                </motion.div>
                                 <div className="text-base md:text-lg text-gray-400">
                                     {stat.label}
                                 </div>

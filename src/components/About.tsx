@@ -1,6 +1,48 @@
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { BookOpen, Users, Heart } from "lucide-react";
 import feiFeiLi from "../assets/fei_fei_li.png";
+
+const AnimatedNumber = ({ value }: { value: number }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+    useEffect(() => {
+        if (!isInView) return;
+
+        const duration = 2000; // 2 seconds
+        const steps = 60;
+        const increment = value / steps;
+        const stepDuration = duration / steps;
+
+        let current = 0;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= value) {
+                setCount(value);
+                clearInterval(timer);
+            } else {
+                setCount(Math.floor(current));
+            }
+        }, stepDuration);
+
+        return () => clearInterval(timer);
+    }, [isInView, value]);
+
+    const formatted = count.toLocaleString("en-IN");
+
+    return (
+        <motion.div
+            ref={ref}
+            className="inline-block"
+            animate={isInView ? { scale: [1, 1.1, 1] } : {}}
+            transition={{ duration: 0.5, delay: 1.5 }}
+        >
+            {formatted}+
+        </motion.div>
+    );
+};
 
 const About = () => {
     const fadeInVariants = {
@@ -123,9 +165,15 @@ const About = () => {
                 <p className="text-lg md:text-xl text-[#030F0F]/80 dark:text-gray-300 mb-4">
                     Our ambitious goal:
                 </p>
-                <div className="text-5xl md:text-7xl font-bold text-[#00DF82] mb-4">
-                    1,00,000+
-                </div>
+                <motion.div
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+                    className="text-5xl md:text-7xl font-bold text-[#00DF82] mb-4"
+                >
+                    <AnimatedNumber value={100000} />
+                </motion.div>
                 <p className="text-xl md:text-2xl font-semibold text-[#030F0F] dark:text-white">
                     Keralites empowered with AI literacy
                 </p>
