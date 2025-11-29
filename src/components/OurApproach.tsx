@@ -58,8 +58,8 @@ const TimelineMilestone = ({
         className="absolute left-1/2 -translate-x-1/2 z-10"
       >
         <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-slate-950 transition-colors duration-500 ${isActive
-            ? 'bg-blue-600 dark:bg-blue-500'
-            : 'bg-slate-300 dark:bg-slate-600'
+          ? 'bg-teal-600 dark:bg-teal-500'
+          : 'bg-slate-300 dark:bg-slate-600'
           }`}>
           <span className="text-white font-bold text-lg md:text-xl">{milestone.number}</span>
         </div>
@@ -125,9 +125,9 @@ const OurApproach = () => {
           {/* Continuous background line - light grey */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-slate-200 dark:bg-slate-700 -translate-x-1/2" />
 
-          {/* Progress line - blue (fills as you scroll) */}
+          {/* Progress line - teal/green (fills as you scroll) */}
           <motion.div
-            className="absolute left-1/2 top-0 w-0.5 md:w-1 bg-blue-600 dark:bg-blue-500 -translate-x-1/2 origin-top"
+            className="absolute left-1/2 top-0 w-0.5 md:w-1 bg-gradient-to-b from-teal-600 to-green-600 dark:from-teal-500 dark:to-green-500 -translate-x-1/2 origin-top"
             style={{ height: lineHeight }}
           />
 
