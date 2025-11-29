@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Lightbulb, DollarSign, Megaphone, Package, Users, ArrowRight } from "lucide-react";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const PartnerWithUs = () => {
     const navigate = useNavigate();
@@ -65,42 +71,72 @@ const PartnerWithUs = () => {
                 </p>
             </motion.div>
 
-            {/* Partner Types Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
-                {partnerTypes.map((partner, index) => {
-                    const Icon = partner.icon;
+            {/* Collapsible Accordion */}
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.6 }}
+                variants={fadeInVariants}
+                className="max-w-4xl mx-auto mb-12"
+            >
+                <Accordion type="single" collapsible className="w-full space-y-4">
+                    {partnerTypes.map((partner, index) => {
+                        const Icon = partner.icon;
+                        const value = `item-${index}`;
 
-                    return (
-                        <motion.div
-                            key={partner.title}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: false, amount: 0.3 }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            variants={fadeInVariants}
-                            className="bg-white dark:bg-[#030F0F]/50 rounded-2xl p-6 md:p-8 border-2 border-[#03624C]/20 hover:border-[#00DF82] shadow-lg hover:shadow-xl hover:shadow-[#00DF82]/20 transition-all duration-300 group"
-                        >
-                            <div className="bg-[#03624C]/10 text-[#00DF82] w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#00DF82]/10 transition-all duration-300">
-                                <Icon className="w-7 h-7" />
-                            </div>
-                            <h4 className="text-xl md:text-2xl font-bold mb-2 text-[#030F0F] dark:text-white">
-                                {partner.title}
-                            </h4>
-                            <p className="text-sm text-[#030F0F]/70 dark:text-gray-400 mb-4">
-                                {partner.description}
-                            </p>
-                            <ul className="space-y-2">
-                                {partner.items.map((item, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 text-sm text-[#030F0F]/70 dark:text-gray-400">
-                                        <span className="text-[#00DF82] mt-0.5">•</span>
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-                    );
-                })}
-            </div>
+                        return (
+                            <AccordionItem
+                                key={partner.title}
+                                value={value}
+                                className="bg-white dark:bg-[#030F0F]/50 rounded-2xl border-2 border-[#03624C]/20 hover:border-[#00DF82] shadow-lg transition-all duration-300 overflow-hidden"
+                            >
+                                <AccordionTrigger className="px-6 md:px-8 py-6 hover:no-underline">
+                                    <div className="flex items-center gap-4 md:gap-6 w-full">
+                                        <div className="bg-[#03624C]/10 text-[#00DF82] w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-data-[state=open]:bg-[#00DF82]/10 group-data-[state=open]:scale-110">
+                                            <Icon className="w-6 h-6 md:w-7 md:h-7" />
+                                        </div>
+                                        <div className="flex-1 text-left">
+                                            <h4 className="text-lg md:text-xl font-bold text-[#030F0F] dark:text-white mb-1">
+                                                {partner.title}
+                                            </h4>
+                                            <p className="text-sm text-[#030F0F]/70 dark:text-gray-400">
+                                                {partner.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </AccordionTrigger>
+                                <AccordionContent className="px-6 md:px-8 pb-6 md:pb-8">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                        className="pt-4 border-t border-[#03624C]/20"
+                                    >
+                                        <p className="text-sm font-semibold text-[#030F0F] dark:text-white mb-4">
+                                            What we're looking for:
+                                        </p>
+                                        <ul className="space-y-3">
+                                            {partner.items.map((item, idx) => (
+                                                <motion.li
+                                                    key={idx}
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ duration: 0.3, delay: idx * 0.1 }}
+                                                    className="flex items-start gap-3 text-sm md:text-base text-[#030F0F]/70 dark:text-gray-400"
+                                                >
+                                                    <span className="text-[#00DF82] mt-1 shrink-0">•</span>
+                                                    <span>{item}</span>
+                                                </motion.li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        );
+                    })}
+                </Accordion>
+            </motion.div>
 
             {/* CTA */}
             <motion.div

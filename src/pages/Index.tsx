@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import OurApproach from "@/components/OurApproach";
-import Programs from "@/components/Programs";
 import WhoCanJoin from "@/components/WhoCanJoin";
 import PartnerWithUs from "@/components/PartnerWithUs";
 import HowToPartner from "@/components/HowToPartner";
@@ -29,7 +28,6 @@ const Index = () => {
           <Hero />
           <About />
           <OurApproach />
-          <Programs />
           <WhoCanJoin />
           <PartnerWithUs />
           <HowToPartner />
