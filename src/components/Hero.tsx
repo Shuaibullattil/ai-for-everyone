@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-teal-50/30 to-green-50/30 dark:from-slate-950 dark:via-teal-950/20 dark:to-green-950/20">
+    <section className="relative min-h-screen overflow-hidden bg-[#030F0F]">
       {/* Subtle Tech Pattern Background */}
       <div className="absolute inset-0 opacity-5">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-20 left-10 w-20 h-20 bg-teal-400/20 dark:bg-teal-500/10 rounded-full blur-2xl"
+          className="absolute top-20 left-10 w-20 h-20 bg-[#00DF82]/20 rounded-full blur-2xl"
         />
         <motion.div
           animate={{
@@ -41,7 +41,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-40 right-20 w-32 h-32 bg-green-400/20 dark:bg-green-500/10 rounded-full blur-3xl"
+          className="absolute top-40 right-20 w-32 h-32 bg-[#03624C]/30 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -53,7 +53,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute bottom-40 left-1/4 w-24 h-24 bg-orange-400/20 dark:bg-orange-500/10 rounded-full blur-2xl"
+          className="absolute bottom-40 left-1/4 w-24 h-24 bg-[#00DF82]/20 rounded-full blur-2xl"
         />
       </div>
 
@@ -70,10 +70,10 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-100 dark:bg-teal-900/30 border border-teal-200 dark:border-teal-800"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#03624C]/30 border border-[#00DF82]/50"
           >
-            <Sparkles className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-            <span className="text-sm font-semibold text-teal-700 dark:text-teal-300">
+            <Sparkles className="w-4 h-4 text-[#00DF82]" />
+            <span className="text-sm font-semibold text-[#00DF82]">
               A Statewide AI Literacy Initiative
             </span>
           </motion.div>
@@ -83,15 +83,15 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
           >
             AI for Everyone:
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-green-600 to-teal-600 dark:from-teal-400 dark:via-green-400 dark:to-teal-400">
+            <span className="text-[#00DF82]">
               Building Kerala's
             </span>
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-teal-600 to-green-600 dark:from-green-400 dark:via-teal-400 dark:to-green-400">
+            <span className="text-[#00DF82]">
               AI-Literate Future
             </span>
           </motion.h1>
@@ -101,10 +101,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
           >
             A statewide initiative to democratize AI knowledge and empower{" "}
-            <span className="font-bold text-teal-600 dark:text-teal-400">1 lakh+ learners</span>{" "}
+            <span className="font-bold text-[#00DF82]">1 lakh+ learners</span>{" "}
             to become creators, not just consumers
           </motion.p>
 
@@ -117,7 +117,7 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              className="group px-8 py-6 text-base sm:text-lg rounded-full bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              className="group px-8 py-6 text-base sm:text-lg rounded-full bg-[#00DF82] hover:bg-[#00DF82]/90 text-[#030F0F] font-bold shadow-xl hover:shadow-2xl hover:shadow-[#00DF82]/50 transition-all duration-300 transform hover:scale-105"
             >
               Become a Partner
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -125,7 +125,7 @@ const Hero = () => {
             <Button
               size="lg"
               variant="outline"
-              className="px-8 py-6 text-base sm:text-lg rounded-full border-2 border-slate-300 dark:border-slate-700 hover:border-teal-500 dark:hover:border-teal-500 hover:bg-teal-50 dark:hover:bg-teal-950/30 transition-all duration-300"
+              className="px-8 py-6 text-base sm:text-lg rounded-full border-2 border-[#00DF82] text-[#00DF82] hover:bg-[#00DF82]/10 transition-all duration-300"
             >
               Learn More
             </Button>
@@ -139,16 +139,16 @@ const Hero = () => {
             className="grid grid-cols-3 gap-8 max-w-3xl mx-auto pt-12"
           >
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-teal-600 dark:text-teal-400">1L+</div>
-              <div className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">Target Learners</div>
+              <div className="text-3xl sm:text-4xl font-bold text-[#00DF82] mb-1">1L+</div>
+              <div className="text-sm sm:text-base text-gray-400 mt-1">Target Learners</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400">14</div>
-              <div className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">Districts</div>
+              <div className="text-3xl sm:text-4xl font-bold text-[#00DF82] mb-1">14</div>
+              <div className="text-sm sm:text-base text-gray-400 mt-1">Districts</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-orange-600 dark:text-orange-400">∞</div>
-              <div className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">Possibilities</div>
+              <div className="text-3xl sm:text-4xl font-bold text-[#00DF82] mb-1">∞</div>
+              <div className="text-sm sm:text-base text-gray-400 mt-1">Possibilities</div>
             </div>
           </motion.div>
         </motion.div>
@@ -164,12 +164,12 @@ const Hero = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-slate-400 dark:border-slate-600 rounded-full flex items-start justify-center p-2"
+          className="w-6 h-10 border-2 border-[#00DF82] rounded-full flex items-start justify-center p-2"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-600 rounded-full"
+            className="w-1.5 h-1.5 bg-[#00DF82] rounded-full"
           />
         </motion.div>
       </motion.div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Handshake, X } from "lucide-react";
+import { X } from "lucide-react";
 
 const FloatingCTA = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -8,7 +8,6 @@ const FloatingCTA = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            // Show after scrolling 500px
             if (window.scrollY > 500 && !isDismissed) {
                 setIsVisible(true);
             } else if (window.scrollY <= 500) {
@@ -20,49 +19,54 @@ const FloatingCTA = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [isDismissed]);
 
-    const handleDismiss = () => {
+    const scrollToPartnership = () => {
+        const partnershipSection = document.getElementById("partnership");
+        if (partnershipSection) {
+            partnershipSection.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+    const handleDismiss = (e: React.MouseEvent) => {
+        e.stopPropagation();
         setIsDismissed(true);
         setIsVisible(false);
     };
 
-    const scrollToPartnership = () => {
-        const partnerSection = document.getElementById("partnership");
-        if (partnerSection) {
-            partnerSection.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
     return (
         <AnimatePresence>
-            {isVisible && (
+            {isVisible && !isDismissed && (
                 <motion.div
-                    initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 100, scale: 0.8 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 group"
+                    exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 group"
                 >
-                    {/* Dismiss Button */}
-                    <button
-                        onClick={handleDismiss}
-                        className="absolute -top-2 -right-2 w-6 h-6 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:scale-110"
-                        aria-label="Dismiss"
-                    >
-                        <X className="w-4 h-4" />
-                    </button>
+                    <div className="relative">
+                        {/* Dismiss Button */}
+                        <button
+                            onClick={handleDismiss}
+                            className="absolute -top-2 -right-2 w-6 h-6 bg-white dark:bg-[#030F0F] rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors z-10"
+                            aria-label="Dismiss"
+                        >
+                            <X className="w-4 h-4 text-[#030F0F] dark:text-white" />
+                        </button>
 
-                    {/* Main Button */}
-                    <button
-                        onClick={scrollToPartnership}
-                        className="flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-teal-600 to-green-600 hover:from-teal-700 hover:to-green-700 dark:from-teal-500 dark:to-green-500 dark:hover:from-teal-600 dark:hover:to-green-600 text-white font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
-                    >
-                        <Handshake className="w-5 h-5" />
-                        <span className="hidden sm:inline">Become a Partner</span>
-                        <span className="sm:hidden">Partner</span>
-                    </button>
+                        {/* Main CTA Button */}
+                        <motion.button
+                            onClick={scrollToPartnership}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="relative px-6 py-4 bg-[#00DF82] hover:bg-[#00DF82]/90 text-[#030F0F] font-bold rounded-full shadow-2xl hover:shadow-[#00DF82]/50 transition-all duration-300"
+                        >
+                            {/* Pulse Animation */}
+                            <span className="absolute inset-0 rounded-full bg-[#00DF82] animate-ping opacity-20" />
 
-                    {/* Pulse Animation */}
-                    <div className="absolute inset-0 rounded-full bg-teal-500 opacity-20 animate-ping pointer-events-none" />
+                            <span className="relative flex items-center gap-2">
+                                <span className="text-sm md:text-base">Become a Partner</span>
+                            </span>
+                        </motion.button>
+                    </div>
                 </motion.div>
             )}
         </AnimatePresence>

@@ -38,13 +38,13 @@ const TimelineMilestone = ({
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className={`flex-1 bg-white dark:bg-slate-900 rounded-2xl p-6 md:p-8 border-2 border-slate-200 dark:border-slate-700 shadow-lg max-w-md ${isLeft ? 'md:ml-auto md:mr-8' : 'md:mr-auto md:ml-8 md:order-2'
+        className={`flex-1 bg-white dark:bg-[#030F0F]/50 rounded-2xl p-6 md:p-8 border-2 border-[#03624C]/20 hover:border-[#00DF82] shadow-lg max-w-md ${isLeft ? 'md:ml-auto md:mr-8' : 'md:mr-auto md:ml-8 md:order-2'
           }`}
       >
-        <h3 className="text-xl md:text-2xl font-bold mb-3 text-slate-900 dark:text-white">
+        <h3 className="text-xl md:text-2xl font-bold mb-3 text-[#030F0F] dark:text-white">
           {milestone.title}
         </h3>
-        <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+        <p className="text-sm md:text-base text-[#030F0F]/70 dark:text-gray-400 leading-relaxed">
           {milestone.description}
         </p>
       </motion.div>
@@ -57,11 +57,11 @@ const TimelineMilestone = ({
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         className="absolute left-1/2 -translate-x-1/2 z-10"
       >
-        <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-slate-950 transition-colors duration-500 ${isActive
-          ? 'bg-teal-600 dark:bg-teal-500'
-          : 'bg-slate-300 dark:bg-slate-600'
+        <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-[#030F0F] transition-colors duration-500 ${isActive
+          ? 'bg-[#00DF82]'
+          : 'bg-gray-300 dark:bg-gray-600'
           }`}>
-          <span className="text-white font-bold text-lg md:text-xl">{milestone.number}</span>
+          <span className="text-[#030F0F] font-bold text-lg md:text-xl">{milestone.number}</span>
         </div>
       </motion.div>
 
@@ -79,7 +79,7 @@ const OurApproach = () => {
     offset: ["start center", "end center"]
   });
 
-  // Transform scroll progress to height percentage for the blue line
+  // Transform scroll progress to height percentage for the progress line
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const [milestone1Active, setMilestone1Active] = React.useState(true);
@@ -105,7 +105,7 @@ const OurApproach = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white"
+            className="text-4xl md:text-5xl font-bold tracking-tight text-[#030F0F] dark:text-white"
           >
             Our Learning Approach
           </motion.h2>
@@ -114,7 +114,7 @@ const OurApproach = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
+            className="mt-4 text-lg text-[#030F0F]/70 dark:text-gray-400 max-w-2xl mx-auto"
           >
             True learning engages the Head, Hand, and Heart.
           </motion.p>
@@ -123,11 +123,11 @@ const OurApproach = () => {
         {/* Timeline Container */}
         <div className="relative">
           {/* Continuous background line - light grey */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-slate-200 dark:bg-slate-700 -translate-x-1/2" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-gray-200 dark:bg-gray-700 -translate-x-1/2" />
 
-          {/* Progress line - teal/green (fills as you scroll) */}
+          {/* Progress line - Bright Green (fills as you scroll) */}
           <motion.div
-            className="absolute left-1/2 top-0 w-0.5 md:w-1 bg-gradient-to-b from-teal-600 to-green-600 dark:from-teal-500 dark:to-green-500 -translate-x-1/2 origin-top"
+            className="absolute left-1/2 top-0 w-0.5 md:w-1 bg-[#00DF82] -translate-x-1/2 origin-top"
             style={{ height: lineHeight }}
           />
 

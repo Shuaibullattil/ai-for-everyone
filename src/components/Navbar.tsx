@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg"
+          ? "bg-white/95 dark:bg-[#030F0F]/95 backdrop-blur-md shadow-lg"
           : "bg-transparent"
         }`}
     >
@@ -35,11 +35,11 @@ const Navbar = () => {
           {/* Logo */}
           <a href="/" className="flex items-center">
             <span className={`text-xl md:text-2xl font-bold transition-colors ${isScrolled
-                ? "text-slate-900 dark:text-white"
+                ? "text-[#030F0F] dark:text-white"
                 : "text-white drop-shadow-lg"
               }`}>
               AI for{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-green-600 dark:from-teal-400 dark:to-green-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00DF82] to-[#03624C]">
                 Everyone
               </span>
             </span>
@@ -52,8 +52,8 @@ const Navbar = () => {
                 key={item.label}
                 href={item.href}
                 className={`text-sm font-medium transition-colors ${isScrolled
-                    ? "text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400"
-                    : "text-white/90 hover:text-white drop-shadow"
+                    ? "text-[#030F0F]/70 hover:text-[#00DF82] dark:text-gray-300 dark:hover:text-[#00DF82]"
+                    : "text-white/90 hover:text-[#00DF82] drop-shadow"
                   }`}
               >
                 {item.label}
@@ -61,7 +61,7 @@ const Navbar = () => {
             ))}
             <Button
               size="sm"
-              className="bg-gradient-to-r from-teal-600 to-green-600 hover:from-teal-700 hover:to-green-700 dark:from-teal-500 dark:to-green-500 dark:hover:from-teal-600 dark:hover:to-green-600 text-white border-0"
+              className="bg-[#00DF82] hover:bg-[#00DF82]/90 text-[#030F0F] border-0 font-bold shadow-lg hover:shadow-xl hover:shadow-[#00DF82]/30 transition-all"
             >
               Get Started
             </Button>
@@ -73,7 +73,7 @@ const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={isScrolled ? "" : "text-white hover:bg-white/20"}
+              className={isScrolled ? "text-[#030F0F] dark:text-white" : "text-white hover:bg-white/20"}
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -94,12 +94,12 @@ const Navbar = () => {
               transition={{ duration: 0.3 }}
               className="md:hidden overflow-hidden"
             >
-              <div className="py-4 space-y-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-lg px-4 mb-4">
+              <div className="py-4 space-y-3 bg-white/95 dark:bg-[#030F0F]/95 backdrop-blur-md rounded-lg px-4 mb-4">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="block text-sm font-medium text-slate-600 hover:text-teal-600 dark:text-slate-300 dark:hover:text-teal-400 transition-colors py-2"
+                    className="block text-sm font-medium text-[#030F0F]/70 hover:text-[#00DF82] dark:text-gray-300 dark:hover:text-[#00DF82] transition-colors py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -107,7 +107,7 @@ const Navbar = () => {
                 ))}
                 <Button
                   size="sm"
-                  className="w-full mt-4 bg-gradient-to-r from-teal-600 to-green-600 hover:from-teal-700 hover:to-green-700 text-white"
+                  className="w-full mt-4 bg-[#00DF82] hover:bg-[#00DF82]/90 text-[#030F0F] font-bold"
                 >
                   Get Started
                 </Button>

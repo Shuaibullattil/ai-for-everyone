@@ -32,7 +32,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-green-500"
         >
             <div className="text-center">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">

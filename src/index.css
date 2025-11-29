@@ -7,111 +7,114 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
-    /* Backgrounds */
-    --background: 210 40% 97%; /* Light gray #F1F5F9 */
-    --foreground: 222 84% 5%; /* Dark navy #0F172A */
+    :root {
+        /* Backgrounds */
+        --background: 0 0% 100%;
+        /* White */
+        --foreground: 180 67% 6%;
+        /* Dark Navy #030F0F */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 84% 5%;
+        --card: 0 0% 100%;
+        --card-foreground: 180 67% 6%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 5%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 180 67% 6%;
 
-    /* Primary - Teal */
-    --primary: 188 94% 43%; /* Teal #06B6D4 */
-    --primary-foreground: 0 0% 100%;
+        /* Primary - Deep Teal/Forest Green */
+        --primary: 166 95% 19%;
+        /* Deep Teal #03624C */
+        --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Deep Green */
-    --secondary: 160 84% 39%; /* Deep Green #059669 */
-    --secondary-foreground: 0 0% 100%;
+        /* Secondary - Bright Green/Mint */
+        --secondary: 160 100% 44%;
+        /* Bright Green #00DF82 */
+        --secondary-foreground: 180 67% 6%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+        --muted: 166 20% 96%;
+        --muted-foreground: 180 20% 40%;
 
-    /* Accent - Sunset Orange */
-    --accent: 17 88% 54%; /* Sunset Orange #F97316 */
-    --accent-foreground: 0 0% 100%;
+        /* Accent - Bright Green/Mint */
+        --accent: 160 100% 44%;
+        /* Bright Green #00DF82 */
+        --accent-foreground: 180 67% 6%;
 
-    /* Additional accent colors */
-    --purple: 258 90% 66%; /* Purple #8B5CF6 */
-    --sky-blue: 217 91% 60%; /* Sky Blue #3B82F6 */
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+        --border: 166 20% 90%;
+        --input: 166 20% 90%;
+        --ring: 160 100% 44%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 188 94% 43%;
+        --radius: 0.75rem;
 
-    --radius: 0.75rem;
+        --sidebar-background: 0 0% 98%;
+        --sidebar-foreground: 180 20% 40%;
+        --sidebar-primary: 166 95% 19%;
+        --sidebar-primary-foreground: 0 0% 98%;
+        --sidebar-accent: 166 20% 96%;
+        --sidebar-accent-foreground: 166 95% 19%;
+        --sidebar-border: 166 20% 91%;
+        --sidebar-ring: 160 100% 44%;
+    }
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+    .dark {
+        --background: 180 67% 6%;
+        /* Dark Navy #030F0F */
+        --foreground: 0 0% 98%;
 
-  .dark {
-    --background: 222 84% 5%; /* Dark navy #0F172A */
-    --foreground: 210 40% 98%;
+        --card: 180 50% 10%;
+        --card-foreground: 0 0% 98%;
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+        --popover: 180 50% 10%;
+        --popover-foreground: 0 0% 98%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+        /* Primary - Deep Teal (slightly lighter for dark mode) */
+        --primary: 166 95% 22%;
+        --primary-foreground: 0 0% 100%;
 
-    /* Primary - Teal (slightly lighter for dark mode) */
-    --primary: 188 94% 50%;
-    --primary-foreground: 0 0% 100%;
+        /* Secondary - Bright Green */
+        --secondary: 160 100% 44%;
+        --secondary-foreground: 180 67% 6%;
 
-    /* Secondary - Deep Green (slightly lighter for dark mode) */
-    --secondary: 160 84% 45%;
-    --secondary-foreground: 0 0% 100%;
+        --muted: 180 40% 15%;
+        --muted-foreground: 0 0% 70%;
 
-    --muted: 222 47% 15%;
-    --muted-foreground: 215 20% 65%;
+        /* Accent - Bright Green */
+        --accent: 160 100% 44%;
+        --accent-foreground: 180 67% 6%;
 
-    /* Accent - Sunset Orange */
-    --accent: 17 88% 60%;
-    --accent-foreground: 0 0% 100%;
+        --destructive: 0 63% 31%;
+        --destructive-foreground: 0 0% 98%;
 
-    /* Additional accent colors */
-    --purple: 258 90% 70%;
-    --sky-blue: 217 91% 65%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 222 47% 18%;
-    --input: 222 47% 18%;
-    --ring: 188 94% 50%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+        --border: 180 40% 20%;
+        --input: 180 40% 20%;
+        --ring: 160 100% 44%;
+        --sidebar-background: 180 67% 6%;
+        --sidebar-foreground: 0 0% 90%;
+        --sidebar-primary: 166 95% 22%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 180 40% 15%;
+        --sidebar-accent-foreground: 0 0% 90%;
+        --sidebar-border: 180 40% 20%;
+        --sidebar-ring: 160 100% 44%;
+    }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+    * {
+        @apply border-border;
+    }
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+    }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-bold;
+    }
 }

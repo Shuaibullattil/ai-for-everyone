@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Users, Code, Heart } from "lucide-react";
+import { Users, MapPin, Calendar, ExternalLink } from "lucide-react";
 
 const AboutTinkerHub = () => {
     const fadeInVariants = {
@@ -7,78 +7,94 @@ const AboutTinkerHub = () => {
         visible: { opacity: 1, y: 0 }
     };
 
+    const stats = [
+        { icon: Users, value: "50K+", label: "Community Members" },
+        { icon: MapPin, value: "100+", label: "Campus Chapters" },
+        { icon: Calendar, value: "500+", label: "Events Annually" }
+    ];
+
     return (
-        <section className="w-full max-w-7xl mx-auto px-4 py-20 md:py-32">
-            <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.6 }}
-                variants={fadeInVariants}
-                className="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 rounded-3xl p-8 md:p-16 text-white relative overflow-hidden"
-            >
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <pattern id="tinkerhub-grid" width="30" height="30" patternUnits="userSpaceOnUse">
-                                <circle cx="15" cy="15" r="1" fill="currentColor" />
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#tinkerhub-grid)" />
-                    </svg>
-                </div>
+        <section className="w-full bg-[#030F0F] py-20 md:py-32 relative overflow-hidden">
+            {/* Dot Pattern Background */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0" style={{
+                    backgroundImage: `radial-gradient(circle, #00DF82 1px, transparent 1px)`,
+                    backgroundSize: '30px 30px'
+                }} />
+            </div>
 
-                <div className="relative z-10 max-w-4xl mx-auto text-center">
-                    {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/20 border border-teal-400/30 mb-6">
-                        <Heart className="w-4 h-4 text-teal-400" />
-                        <span className="text-sm font-semibold text-teal-300">
-                            Powered By
-                        </span>
-                    </div>
-
-                    {/* Title */}
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <div className="relative z-10 max-w-7xl mx-auto px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.6 }}
+                    variants={fadeInVariants}
+                    className="text-center mb-12"
+                >
+                    <h2 className="text-sm font-bold tracking-wider text-[#00DF82] uppercase mb-3">
+                        Powered By
+                    </h2>
+                    <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
                         Enabled by{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-green-400">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00DF82] to-[#03624C]">
                             TinkerHub
                         </span>
-                    </h2>
-
-                    {/* Description */}
-                    <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8">
-                        TinkerHub is Kerala's largest community of makers and learners, connecting thousands of students, professionals, and innovators across the state. We create spaces for collaboration, learning, and building the future together.
+                    </h3>
+                    <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        TinkerHub is Kerala's largest community of tinkerers, makers, and innovators. We're a peer-learning community that brings together students, professionals, and enthusiasts to learn, build, and share.
                     </p>
+                </motion.div>
 
-                    {/* Stats */}
-                    <div className="grid grid-cols-3 gap-6 mb-8 max-w-2xl mx-auto">
-                        <div>
-                            <div className="text-3xl md:text-4xl font-bold text-teal-400 mb-1">50K+</div>
-                            <div className="text-sm text-slate-400">Community Members</div>
-                        </div>
-                        <div>
-                            <div className="text-3xl md:text-4xl font-bold text-green-400 mb-1">100+</div>
-                            <div className="text-sm text-slate-400">Campus Chapters</div>
-                        </div>
-                        <div>
-                            <div className="text-3xl md:text-4xl font-bold text-orange-400 mb-1">500+</div>
-                            <div className="text-sm text-slate-400">Events Annually</div>
-                        </div>
-                    </div>
+                {/* Stats Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    {stats.map((stat, index) => {
+                        const Icon = stat.icon;
 
-                    {/* CTA */}
+                        return (
+                            <motion.div
+                                key={stat.label}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: false, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                variants={fadeInVariants}
+                                className="text-center"
+                            >
+                                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#00DF82]/10 text-[#00DF82] mb-4">
+                                    <Icon className="w-8 h-8" />
+                                </div>
+                                <div className="text-4xl md:text-5xl font-bold text-[#00DF82] mb-2">
+                                    {stat.value}
+                                </div>
+                                <div className="text-base md:text-lg text-gray-400">
+                                    {stat.label}
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+
+                {/* CTA */}
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    variants={fadeInVariants}
+                    className="text-center"
+                >
                     <a
                         href="https://tinkerhub.org"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-slate-900 font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-[#00DF82] hover:bg-[#00DF82]/90 text-[#030F0F] font-bold rounded-full shadow-lg hover:shadow-xl hover:shadow-[#00DF82]/50 transition-all duration-300 transform hover:scale-105"
                     >
-                        <span>Visit TinkerHub.org</span>
-                        <ExternalLink className="w-4 h-4" />
+                        <span>Learn More About TinkerHub</span>
+                        <ExternalLink className="w-5 h-5" />
                     </a>
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
         </section>
     );
 };
