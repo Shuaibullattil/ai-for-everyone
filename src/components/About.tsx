@@ -27,7 +27,7 @@ const About = () => {
     ];
 
     return (
-        <section className="w-full max-w-7xl mx-auto px-4 py-20 md:py-32">
+        <section id="about" className="w-full max-w-7xl mx-auto px-4 py-20 md:py-32">
             {/* Header */}
             <motion.div
                 initial="hidden"
@@ -55,26 +55,26 @@ const About = () => {
                     variants={fadeInVariants}
                     className="max-w-5xl mx-auto mt-12 mb-16"
                 >
-                    <div className="flex items-center justify-between gap-6 md:gap-12">
-                        <div className="flex-1 relative">
-                            <div className="absolute -top-4 -left-2 text-6xl text-[#00DF82]/30 font-serif">"</div>
-                            <blockquote className="text-lg md:text-xl text-[#030F0F]/80 dark:text-gray-300 italic leading-relaxed px-6 md:px-8 text-left">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12">
+                        <div className="flex-1 relative order-2 md:order-1">
+                            <div className="absolute -top-2 -left-1 md:-top-4 md:-left-2 text-4xl md:text-6xl text-[#00DF82]/30 font-serif">"</div>
+                            <blockquote className="text-sm md:text-base text-[#030F0F]/80 dark:text-gray-300 italic leading-relaxed px-4 md:px-8 text-center md:text-left">
                                 We have a historical opportunity and responsibility to establish a human-centred framework for AI research, education, practice and policy.
                             </blockquote>
-                            <div className="absolute -bottom-4 right-4 text-6xl text-[#00DF82]/30 font-serif">"</div>
-                            <p className="text-base text-[#030F0F]/70 dark:text-gray-400 mt-4 font-semibold text-left px-6 md:px-8">
+                            <div className="absolute -bottom-2 right-2 md:-bottom-4 md:right-4 text-4xl md:text-6xl text-[#00DF82]/30 font-serif">"</div>
+                            <p className="text-xs md:text-sm text-[#030F0F]/70 dark:text-gray-400 mt-3 md:mt-4 font-semibold text-center md:text-left px-4 md:px-8">
                                 — Fei-Fei Li, AI Researcher & Educator
                             </p>
                         </div>
 
-                        {/* Image - Always on the right */}
-                        <div className="shrink-0">
+                        {/* Image - Responsive positioning */}
+                        <div className="shrink-0 order-1 md:order-2">
                             <div className="relative">
                                 <div className="absolute inset-0 bg-[#00DF82]/20 rounded-full blur-xl transform translate-x-2 translate-y-2"></div>
                                 <img
                                     src={feiFeiLi}
                                     alt="Fei-Fei Li"
-                                    className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-[#00DF82]/30 shadow-2xl"
+                                    className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-48 md:h-48 rounded-full object-cover border-4 border-[#00DF82]/30 shadow-2xl mx-auto"
                                 />
                             </div>
                         </div>

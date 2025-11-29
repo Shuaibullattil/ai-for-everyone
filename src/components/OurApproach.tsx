@@ -1,142 +1,145 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
+import { Brain, Hand, Heart } from "lucide-react";
 
 const milestones = [
   {
     number: "01",
+    icon: Brain,
     title: "Head — Understand",
     description: "Learn how AI works and why it matters in everyday life.",
+    color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-blue-50 dark:bg-blue-950/20",
+    borderColor: "border-blue-200 dark:border-blue-800",
   },
   {
     number: "02",
+    icon: Hand,
     title: "Hand — Build",
     description: "Experiment with AI tools, create projects, and solve local problems through hands-on learning.",
+    color: "from-green-500 to-emerald-500",
+    bgColor: "bg-green-50 dark:bg-green-950/20",
+    borderColor: "border-green-200 dark:border-green-800",
   },
   {
     number: "03",
+    icon: Heart,
     title: "Heart — Create & Share",
     description: "Share knowledge, mentor others, and help build an inclusive AI-powered future for Kerala.",
+    color: "from-pink-500 to-rose-500",
+    bgColor: "bg-pink-50 dark:bg-pink-950/20",
+    borderColor: "border-pink-200 dark:border-pink-800",
   }
 ];
 
-const TimelineMilestone = ({
-  milestone,
-  index,
-  isActive
-}: {
-  milestone: typeof milestones[0];
-  index: number;
-  isActive: boolean;
-}) => {
-  const isLeft = index % 2 === 0;
-
-  return (
-    <div className="relative flex items-center gap-8 md:gap-12">
-      {/* Content card - alternating sides on desktop, centered on mobile */}
-      <motion.div
-        initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className={`flex-1 bg-white dark:bg-[#030F0F]/50 rounded-2xl p-6 md:p-8 border-2 border-[#03624C]/20 hover:border-[#00DF82] shadow-lg max-w-md ${isLeft ? 'md:ml-auto md:mr-8' : 'md:mr-auto md:ml-8 md:order-2'
-          }`}
-      >
-        <h3 className="text-xl md:text-2xl font-bold mb-3 text-[#030F0F] dark:text-white">
-          {milestone.title}
-        </h3>
-        <p className="text-sm md:text-base text-[#030F0F]/70 dark:text-gray-400 leading-relaxed">
-          {milestone.description}
-        </p>
-      </motion.div>
-
-      {/* Milestone circle - on the timeline */}
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="absolute left-1/2 -translate-x-1/2 z-10"
-      >
-        <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-[#030F0F] transition-colors duration-500 ${isActive
-          ? 'bg-[#00DF82]'
-          : 'bg-gray-300 dark:bg-gray-600'
-          }`}>
-          <span className="text-[#030F0F] font-bold text-lg md:text-xl">{milestone.number}</span>
-        </div>
-      </motion.div>
-
-      {/* Spacer for desktop layout */}
-      <div className={`flex-1 hidden md:block ${isLeft ? '' : 'md:order-1'}`} />
-    </div>
-  );
-};
-
 const OurApproach = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"]
-  });
-
-  // Transform scroll progress to height percentage for the progress line
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
-  const [milestone1Active, setMilestone1Active] = React.useState(true);
-  const [milestone2Active, setMilestone2Active] = React.useState(false);
-  const [milestone3Active, setMilestone3Active] = React.useState(false);
-
-  React.useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (latest) => {
-      setMilestone1Active(true);
-      setMilestone2Active(latest >= 0.33);
-      setMilestone3Active(latest >= 0.66);
-    });
-    return unsubscribe;
-  }, [scrollYProgress]);
-
   return (
-    <section ref={containerRef} id="approach" className="w-full max-w-7xl mx-auto px-4 py-20 md:py-32 relative">
+    <section id="approach" className="w-full max-w-7xl mx-auto px-4 py-20 md:py-32 relative">
       <div className="relative z-10">
         {/* Header */}
-        <div className="text-center mb-32">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight text-[#030F0F] dark:text-white"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 md:mb-20"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[#030F0F] dark:text-white mb-4">
             Our Learning Approach
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-lg text-[#030F0F]/70 dark:text-gray-400 max-w-2xl mx-auto"
-          >
+          </h2>
+          <p className="text-lg text-[#030F0F]/70 dark:text-gray-400 max-w-2xl mx-auto">
             True learning engages the Head, Hand, and Heart.
-          </motion.p>
+          </p>
+        </motion.div>
+
+        {/* Cards Grid - Responsive Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative">
+          {milestones.map((milestone, index) => {
+            const Icon = milestone.icon;
+            return (
+              <motion.div
+                key={milestone.number}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className={`relative ${milestone.bgColor} rounded-2xl p-8 border-2 ${milestone.borderColor} shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group`}
+              >
+                {/* Connecting Arrow (only on desktop, between cards) */}
+                {index < milestones.length - 1 && (
+                  <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+                    <motion.div
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      whileInView={{ pathLength: 1, opacity: 1 }}
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
+                      className="w-8 h-8"
+                    >
+                      <svg viewBox="0 0 32 32" fill="none" className="w-full h-full">
+                        <motion.path
+                          d="M 8 16 L 24 16 M 20 12 L 24 16 L 20 20"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-[#00DF82]"
+                        />
+                      </svg>
+                    </motion.div>
+                  </div>
+                )}
+
+                {/* Number Badge */}
+                <div className="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-gradient-to-br from-[#00DF82] to-[#03624C] flex items-center justify-center shadow-xl border-4 border-white dark:border-[#030F0F] z-20">
+                  <span className="text-white font-bold text-xl">{milestone.number}</span>
+                </div>
+
+                {/* Icon */}
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${milestone.color} flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow`}
+                >
+                  <Icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
+                </motion.div>
+
+                {/* Content */}
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[#030F0F] dark:text-white group-hover:text-[#00DF82] transition-colors">
+                  {milestone.title}
+                </h3>
+                <p className="text-sm md:text-base text-[#030F0F]/70 dark:text-gray-400 leading-relaxed">
+                  {milestone.description}
+                </p>
+
+                {/* Decorative Element */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${milestone.color} rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity`} />
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Timeline Container */}
-        <div className="relative">
-          {/* Continuous background line - light grey */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-gray-200 dark:bg-gray-700 -translate-x-1/2" />
-
-          {/* Progress line - Bright Green (fills as you scroll) */}
-          <motion.div
-            className="absolute left-1/2 top-0 w-0.5 md:w-1 bg-[#00DF82] -translate-x-1/2 origin-top"
-            style={{ height: lineHeight }}
-          />
-
-          {/* Milestones - Increased spacing */}
-          <div className="space-y-32 md:space-y-48 relative">
-            <TimelineMilestone milestone={milestones[0]} index={0} isActive={milestone1Active} />
-            <TimelineMilestone milestone={milestones[1]} index={1} isActive={milestone2Active} />
-            <TimelineMilestone milestone={milestones[2]} index={2} isActive={milestone3Active} />
-          </div>
+        {/* Bottom Connecting Line (Mobile) */}
+        <div className="md:hidden flex items-center justify-center gap-4 mt-8">
+          {milestones.map((_, index) => (
+            <React.Fragment key={index}>
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="w-3 h-3 rounded-full bg-[#00DF82]"
+              />
+              {index < milestones.length - 1 && (
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 40 }}
+                  viewport={{ once: false }}
+                  transition={{ duration: 0.5, delay: index * 0.2 + 0.2 }}
+                  className="h-0.5 bg-[#00DF82]"
+                />
+              )}
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </section>

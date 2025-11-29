@@ -117,6 +117,12 @@ const Hero = () => {
           >
             <Button
               size="lg"
+              onClick={() => {
+                const element = document.getElementById("partnership");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
               className="group px-8 py-6 text-base sm:text-lg rounded-full bg-[#00DF82] hover:bg-[#00DF82]/90 text-[#030F0F] font-bold shadow-xl hover:shadow-2xl hover:shadow-[#00DF82]/50 transition-all duration-300 transform hover:scale-105"
             >
               Become a Partner
@@ -125,6 +131,12 @@ const Hero = () => {
             <Button
               size="lg"
               variant="outline"
+              onClick={() => {
+                const element = document.getElementById("about");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
               className="px-8 py-6 text-base sm:text-lg rounded-full border-2 border-[#00DF82] text-[#00DF82] hover:bg-[#00DF82]/10 transition-all duration-300"
             >
               Learn More
