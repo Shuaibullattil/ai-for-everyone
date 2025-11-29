@@ -1,73 +1,151 @@
-# Welcome to your Lovable project
+# AI for Everyone - Kerala
 
-## Project info
+A statewide initiative to democratize AI knowledge and empower **1 lakh+ learners** across Kerala to become creators, not just consumers of AI technology.
 
-**URL**: https://lovable.dev/projects/de9d514c-bf75-4517-ae46-8ffa8691da14
+🌐 **Live Website**: [https://aiforeveryone-tinkerhub.vercel.app](https://aiforeveryone-tinkerhub.vercel.app)
 
-## How can I edit this code?
+## About the Campaign
 
-There are several ways of editing your application.
+**AI for Everyone - Kerala** is a collaborative movement designed to make AI literacy accessible to all Keralites, regardless of age, background, or technical expertise. The campaign is powered by [TinkerHub](https://tinkerhub.org), Kerala's largest community of tinkerers, makers, and innovators.
 
-**Use Lovable**
+### Our Mission
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/de9d514c-bf75-4517-ae46-8ffa8691da14) and start prompting.
+- **Literacy for All**: Making AI knowledge accessible to students, workers, elders, and everyone in between
+- **Creators Not Consumers**: Empowering learners to create AI solutions for local challenges
+- **Knowledge as Public Good**: Building a movement where AI education is free, open, and community-driven
 
-Changes made via Lovable will be committed automatically to this repo.
+### Our Approach
 
-**Use your preferred IDE**
+True learning engages the **Head, Hand, and Heart**:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. **Head — Understand**: Learn how AI works and why it matters in everyday life
+2. **Hand — Build**: Experiment with AI tools, create projects, and solve local problems through hands-on learning
+3. **Heart — Create & Share**: Share knowledge, mentor others, and help build an inclusive AI-powered future for Kerala
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Target Audience
 
-Follow these steps:
+- **KuttyMakers** (Ages 10-17): Foundational AI concepts through interactive workshops and fun projects
+- **Young Makers** (College Students): Problem-solving and building solutions through hackathons and mentorship
+- **Friends of the Movement** (Educators, Professionals, Parents): Understanding AI's impact and guiding the next generation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Project Setup
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Prerequisites
 
-# Step 3: Install the necessary dependencies.
-npm i
+- **Node.js** (v18 or higher) - [Download here](https://nodejs.org/) or install using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **npm** (comes with Node.js) or **bun** (optional)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Installation Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone <YOUR_GIT_URL>
+   cd ai-for-kerala
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+   or if using bun:
+   ```bash
+   bun install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   or if using bun:
+   ```bash
+   bun run dev
+   ```
+
+4. **Open your browser**
+   - The development server will start on `http://localhost:8080`
+   - The page will automatically reload when you make changes
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run build:dev` - Build for development
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+
+## Technology Stack
+
+This project is built with modern web technologies:
+
+- **Vite** - Fast build tool and dev server
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animation library
+- **shadcn/ui** - High-quality component library
+- **React Router** - Client-side routing
+- **TanStack Query** - Data fetching and state management
+
+## Project Structure
+
+```
+ai-for-kerala/
+├── src/
+│   ├── components/      # Reusable React components
+│   │   ├── ui/         # shadcn/ui components
+│   │   └── ...         # Feature components
+│   ├── pages/          # Page components
+│   ├── assets/         # Images and static assets
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions
+│   ├── App.tsx         # Main app component
+│   └── main.tsx        # Entry point
+├── public/             # Static files
+├── index.html          # HTML template
+└── package.json        # Dependencies and scripts
 ```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project is deployed on **Vercel**. The site is automatically deployed when changes are pushed to the main branch.
 
-**Use GitHub Codespaces**
+**Live URL**: [https://aiforeveryone-tinkerhub.vercel.app](https://aiforeveryone-tinkerhub.vercel.app)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Manual Deployment
 
-## What technologies are used for this project?
+To deploy manually:
 
-This project is built with:
+1. Build the project:
+   ```bash
+   npm run build
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2. The `dist/` folder contains the production-ready files
 
-## How can I deploy this project?
+3. Deploy to your preferred hosting service (Vercel, Netlify, etc.)
 
-Simply open [Lovable](https://lovable.dev/projects/de9d514c-bf75-4517-ae46-8ffa8691da14) and click on Share -> Publish.
+## Contributing
 
-## Can I connect a custom domain to my Lovable project?
+We welcome contributions! If you'd like to contribute:
 
-Yes, you can!
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Contact & Partnership
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+For partnership opportunities or inquiries:
+
+- **Email**: hello@tinkerhub.org
+- **Website**: [tinkerhub.org](https://tinkerhub.org)
+- **Twitter**: [@tinkerhub](https://twitter.com/tinkerhub)
+
+## License
+
+This project is part of the AI for Everyone - Kerala campaign, powered by TinkerHub.
+
+---
+
+**Together, let's build Kerala's AI-literate future!** 🚀
